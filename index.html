@@ -3,232 +3,479 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sweets Shop | Fresh Indian Sweets</title>
+  <title>Sweets Shop | Premium Indian Sweets</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
+    }
+
+    html {
+      scroll-behavior: smooth;
     }
 
     body {
-      background: #fffaf3;
-      color: #2b1a10;
+      font-family: "Poppins", sans-serif;
+      background: #fff8ef;
+      color: #2b160b;
+      overflow-x: hidden;
     }
 
     header {
-      background: #8b0000;
-      color: white;
+      width: 100%;
       padding: 18px 8%;
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
+      background: rgba(43, 22, 11, 0.88);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid rgba(255, 215, 130, 0.25);
     }
 
     .logo {
-      font-size: 28px;
-      font-weight: bold;
+      font-family: "Playfair Display", serif;
+      font-size: 30px;
+      font-weight: 800;
+      color: #ffd166;
+      letter-spacing: 1px;
     }
 
     nav a {
-      color: white;
+      color: #fff6e8;
       text-decoration: none;
-      margin-left: 25px;
-      font-weight: 600;
+      margin-left: 26px;
+      font-size: 15px;
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background: #ffd166;
+      left: 0;
+      bottom: -6px;
+      transition: 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
     }
 
     .hero {
-      min-height: 90vh;
-      background: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
-      url("https://images.unsplash.com/photo-1605197183305-6d0fbb9a9236?auto=format&fit=crop&w=1600&q=80");
-      background-size: cover;
-      background-position: center;
-      display: flex;
+      min-height: 100vh;
+      padding: 130px 8% 70px;
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 45px;
       align-items: center;
-      padding: 0 8%;
-      color: white;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(255, 209, 102, .25), transparent 30%),
+        linear-gradient(135deg, #fff8ef 0%, #fff0d6 45%, #f7d9a5 100%);
     }
 
-    .hero-content {
-      max-width: 650px;
+    .tag {
+      display: inline-block;
+      padding: 9px 18px;
+      border-radius: 30px;
+      background: rgba(139, 0, 0, .1);
+      color: #8b0000;
+      font-weight: 600;
+      margin-bottom: 18px;
+      animation: fadeUp 0.8s ease forwards;
     }
 
     .hero h1 {
-      font-size: 56px;
-      margin-bottom: 20px;
+      font-family: "Playfair Display", serif;
+      font-size: 64px;
+      line-height: 1.08;
+      color: #2b160b;
+      margin-bottom: 22px;
+      animation: fadeUp 1s ease forwards;
+    }
+
+    .hero h1 span {
+      color: #9b111e;
     }
 
     .hero p {
-      font-size: 20px;
-      margin-bottom: 30px;
-      line-height: 1.6;
+      font-size: 18px;
+      line-height: 1.8;
+      color: #6b4a35;
+      margin-bottom: 32px;
+      max-width: 620px;
+      animation: fadeUp 1.2s ease forwards;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      animation: fadeUp 1.4s ease forwards;
     }
 
     .btn {
       display: inline-block;
-      background: #ffb703;
-      color: #2b1a10;
-      padding: 14px 28px;
-      border-radius: 30px;
+      padding: 15px 28px;
+      border-radius: 40px;
       text-decoration: none;
-      font-weight: bold;
-      margin-right: 12px;
-      transition: .3s;
+      font-weight: 700;
+      transition: 0.35s;
+      border: none;
+      cursor: pointer;
+      font-size: 15px;
     }
 
-    .btn:hover {
-      transform: translateY(-4px);
-      background: #ffd166;
+    .btn-primary {
+      background: linear-gradient(135deg, #8b0000, #c1121f);
+      color: white;
+      box-shadow: 0 12px 30px rgba(139, 0, 0, .28);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 18px 35px rgba(139, 0, 0, .38);
+    }
+
+    .btn-outline {
+      border: 1.5px solid #8b0000;
+      color: #8b0000;
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      background: #8b0000;
+      color: white;
+      transform: translateY(-5px);
+    }
+
+    .hero-img {
+      position: relative;
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .hero-img img {
+      width: 100%;
+      border-radius: 35px;
+      box-shadow: 0 30px 70px rgba(43, 22, 11, .25);
+    }
+
+    .premium-card {
+      position: absolute;
+      bottom: -25px;
+      left: -20px;
+      background: rgba(255,255,255,.82);
+      backdrop-filter: blur(18px);
+      padding: 22px;
+      border-radius: 22px;
+      box-shadow: 0 18px 45px rgba(0,0,0,.15);
+      border: 1px solid rgba(255,255,255,.7);
+    }
+
+    .premium-card h3 {
+      color: #8b0000;
+      margin-bottom: 6px;
     }
 
     section {
-      padding: 70px 8%;
+      padding: 85px 8%;
     }
 
     .title {
+      font-family: "Playfair Display", serif;
       text-align: center;
-      font-size: 38px;
-      margin-bottom: 15px;
+      font-size: 46px;
       color: #8b0000;
+      margin-bottom: 12px;
     }
 
     .subtitle {
       text-align: center;
-      margin-bottom: 45px;
-      color: #6b4b36;
-      font-size: 17px;
+      color: #7a5740;
+      max-width: 650px;
+      margin: 0 auto 48px;
+      line-height: 1.7;
     }
 
-    .about {
+    .about-box {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 40px;
+      gap: 45px;
       align-items: center;
     }
 
-    .about img {
+    .about-box img {
       width: 100%;
-      border-radius: 20px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+      border-radius: 30px;
+      box-shadow: 0 25px 55px rgba(0,0,0,.14);
     }
 
-    .about p {
-      font-size: 18px;
-      line-height: 1.8;
+    .about-text h3 {
+      font-family: "Playfair Display", serif;
+      font-size: 34px;
+      margin-bottom: 15px;
     }
 
-    .cards {
+    .about-text p {
+      color: #6b4a35;
+      line-height: 1.9;
+      font-size: 17px;
+    }
+
+    .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 26px;
     }
 
     .card {
-      background: white;
-      padding: 25px;
-      border-radius: 18px;
-      text-align: center;
-      box-shadow: 0 8px 25px rgba(0,0,0,.08);
-      transition: .3s;
+      background: rgba(255,255,255,.8);
+      border: 1px solid rgba(255, 209, 102, .35);
+      border-radius: 25px;
+      overflow: hidden;
+      box-shadow: 0 15px 40px rgba(0,0,0,.08);
+      transition: .35s;
     }
 
     .card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-10px);
+      box-shadow: 0 25px 60px rgba(139, 0, 0, .18);
     }
 
     .card img {
       width: 100%;
-      height: 170px;
+      height: 190px;
       object-fit: cover;
-      border-radius: 15px;
-      margin-bottom: 15px;
     }
 
-    .card h3 {
-      color: #8b0000;
-      margin-bottom: 10px;
-    }
-
-    .price {
-      font-weight: bold;
-      color: #d00000;
-      margin: 12px 0;
-    }
-
-    .order-btn {
-      border: none;
-      background: #8b0000;
-      color: white;
-      padding: 11px 22px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-    }
-
-    .features {
-      background: #8b0000;
-      color: white;
-    }
-
-    .features .title {
-      color: #ffcc70;
-    }
-
-    .features .subtitle {
-      color: #ffe8b8;
-    }
-
-    .feature-box {
-      background: rgba(255,255,255,.12);
-      padding: 25px;
-      border-radius: 16px;
-      text-align: center;
-    }
-
-    .contact {
-      background: white;
-      border-radius: 25px;
-      box-shadow: 0 10px 30px rgba(0,0,0,.08);
-      max-width: 900px;
-      margin: auto;
-      padding: 40px;
-      text-align: center;
-    }
-
-    .contact p {
-      font-size: 18px;
-      margin: 12px 0;
-    }
-
-    footer {
-      background: #2b1a10;
-      color: white;
-      text-align: center;
+    .card-content {
       padding: 22px;
     }
 
-    @media(max-width: 768px) {
+    .card h3 {
+      font-size: 22px;
+      color: #8b0000;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #73513a;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    .price {
+      margin: 14px 0;
+      font-weight: 800;
+      color: #2b160b;
+      font-size: 18px;
+    }
+
+    .small-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 14px;
+      background: linear-gradient(135deg, #8b0000, #c1121f);
+      color: white;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .small-btn:hover {
+      transform: scale(1.03);
+    }
+
+    .delivery {
+      background: linear-gradient(135deg, #2b160b, #8b0000);
+      color: white;
+    }
+
+    .delivery .title {
+      color: #ffd166;
+    }
+
+    .delivery .subtitle {
+      color: #ffe8bd;
+    }
+
+    .delivery-box {
+      background: rgba(255,255,255,.12);
+      border: 1px solid rgba(255,255,255,.18);
+      padding: 28px;
+      border-radius: 24px;
+      text-align: center;
+      backdrop-filter: blur(12px);
+      transition: .3s;
+    }
+
+    .delivery-box:hover {
+      transform: translateY(-8px);
+      background: rgba(255,255,255,.18);
+    }
+
+    .delivery-box h3 {
+      color: #ffd166;
+      margin-bottom: 10px;
+    }
+
+    .quick-order {
+      background: #fff0d6;
+    }
+
+    .quick-box {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 35px;
+      border-radius: 30px;
+      box-shadow: 0 20px 55px rgba(0,0,0,.1);
+      text-align: center;
+    }
+
+    .quick-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .quick-buttons button {
+      padding: 13px 20px;
+      border-radius: 30px;
+      border: 1px solid #8b0000;
+      background: white;
+      color: #8b0000;
+      font-weight: 700;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .quick-buttons button:hover {
+      background: #8b0000;
+      color: white;
+      transform: translateY(-4px);
+    }
+
+    .contact-card {
+      max-width: 900px;
+      margin: auto;
+      text-align: center;
+      background: linear-gradient(135deg, #fff, #fff0d6);
+      padding: 45px;
+      border-radius: 35px;
+      box-shadow: 0 25px 60px rgba(0,0,0,.1);
+    }
+
+    .contact-card p {
+      margin: 12px 0;
+      color: #5f3d28;
+      font-size: 17px;
+    }
+
+    .whatsapp-float {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #25D366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      text-decoration: none;
+      box-shadow: 0 12px 30px rgba(37, 211, 102, .45);
+      z-index: 999;
+      animation: pulse 1.8s infinite;
+    }
+
+    footer {
+      background: #2b160b;
+      color: white;
+      text-align: center;
+      padding: 24px;
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-14px);
+      }
+    }
+
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, .6);
+      }
+      70% {
+        box-shadow: 0 0 0 18px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+
+    @media(max-width: 850px) {
       header {
-        flex-direction: column;
-        gap: 12px;
+        padding: 15px 5%;
       }
 
-      nav a {
-        margin: 0 8px;
-        font-size: 14px;
+      nav {
+        display: none;
+      }
+
+      .hero {
+        grid-template-columns: 1fr;
+        padding: 120px 5% 60px;
       }
 
       .hero h1 {
-        font-size: 38px;
+        font-size: 42px;
       }
 
-      .about {
+      section {
+        padding: 65px 5%;
+      }
+
+      .about-box {
         grid-template-columns: 1fr;
+      }
+
+      .title {
+        font-size: 36px;
+      }
+
+      .premium-card {
+        position: static;
+        margin-top: 15px;
       }
     }
   </style>
@@ -241,141 +488,204 @@
   <nav>
     <a href="#home">Home</a>
     <a href="#about">About</a>
-    <a href="#menu">Menu</a>
+    <a href="#sweets">Sweets</a>
+    <a href="#delivery">Delivery</a>
     <a href="#contact">Contact</a>
   </nav>
 </header>
 
 <section class="hero" id="home">
-  <div class="hero-content">
-    <h1>Fresh Sweets Made With Love</h1>
+  <div>
+    <span class="tag">Premium Indian Sweets</span>
+    <h1>Fresh Sweets, <span>Royal Taste</span> & Pure Happiness</h1>
     <p>
-      Enjoy premium Indian sweets, namkeen, dry fruit sweets and festive gift boxes
-      made fresh every day with authentic taste.
+      Taste the richness of traditional Indian mithai made fresh daily with premium ingredients.
+      Order sweets, namkeen, gift boxes and festive specials directly on WhatsApp.
     </p>
-    <a href="#menu" class="btn">View Menu</a>
-    <a href="#contact" class="btn">Order Now</a>
+
+    <div class="buttons">
+      <a href="#sweets" class="btn btn-primary">Explore Menu</a>
+      <a href="https://wa.me/919876543210?text=Hello%2C%20I%20want%20to%20order%20sweets." target="_blank" class="btn btn-outline">
+        WhatsApp Order
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-img">
+    <img src="https://images.unsplash.com/photo-1605197183305-6d0fbb9a9236?auto=format&fit=crop&w=1000&q=80" alt="Premium sweets">
+    <div class="premium-card">
+      <h3>Fresh Daily</h3>
+      <p>Bulk orders & home delivery available</p>
+    </div>
   </div>
 </section>
 
 <section id="about">
-  <h2 class="title">About Sweets Shop</h2>
-  <p class="subtitle">Traditional taste with modern quality</p>
+  <h2 class="title">About Our Shop</h2>
+  <p class="subtitle">
+    A premium sweet shop serving fresh mithai, namkeen and gift boxes for every celebration.
+  </p>
 
-  <div class="about">
-    <img src="https://images.unsplash.com/photo-1615485500834-bc10199bc727?auto=format&fit=crop&w=1000&q=80">
+  <div class="about-box">
+    <img src="https://images.unsplash.com/photo-1615485500834-bc10199bc727?auto=format&fit=crop&w=1000&q=80" alt="Sweet shop">
 
-    <p>
-      Sweets Shop brings you delicious and fresh sweets prepared using quality
-      ingredients. From traditional mithai to modern gift packs, we serve sweets
-      perfect for festivals, weddings, birthdays and daily celebrations.
-      <br><br>
-      We also accept bulk orders, festive orders and custom sweet boxes.
-    </p>
+    <div class="about-text">
+      <h3>Traditional Taste With Premium Quality</h3>
+      <p>
+        Sweets Shop brings you authentic Indian sweets made with care, purity and rich flavour.
+        We prepare fresh sweets daily for festivals, weddings, birthdays, corporate gifting and family celebrations.
+        <br><br>
+        From Kaju Katli to Gulab Jamun, every sweet is crafted to give a premium taste experience.
+      </p>
+    </div>
   </div>
 </section>
 
-<section id="menu">
-  <h2 class="title">Our Best  Sellers</h2>
-  <p class="subtitle">Fresh, tasty and made daily</p>
+<section id="sweets">
+  <h2 class="title">Our Premium Menu</h2>
+  <p class="subtitle">
+    Choose from our best-selling sweets and order instantly on WhatsApp.
+  </p>
 
-  <div class="cards">
+  <div class="grid">
     <div class="card">
       <img src="https://images.unsplash.com/photo-1605197183305-6d0fbb9a9236?auto=format&fit=crop&w=800&q=80">
-      <h3>Kaju Katli</h3>
-      <p>Premium cashew sweet with rich taste.</p>
-      <div class="price">₹850 / kg</div>
-      <button class="order-btn" onclick="order('Kaju Katli')">Order on WhatsApp</button>
+      <div class="card-content">
+        <h3>Kaju Katli</h3>
+        <p>Premium cashew sweet with smooth royal taste.</p>
+        <div class="price">₹850 / kg</div>
+        <button class="small-btn" onclick="orderItem('Kaju Katli')">Order Now</button>
+      </div>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=800&q=80">
-      <h3>Gulab Jamun</h3>
-      <p>Soft and juicy classic Indian sweet.</p>
-      <div class="price">₹320 / kg</div>
-      <button class="order-btn" onclick="order('Gulab Jamun')">Order on WhatsApp</button>
+      <div class="card-content">
+        <h3>Gulab Jamun</h3>
+        <p>Soft, juicy and freshly prepared classic sweet.</p>
+        <div class="price">₹320 / kg</div>
+        <button class="small-btn" onclick="orderItem('Gulab Jamun')">Order Now</button>
+      </div>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=800&q=80">
-      <h3>Motichoor Laddu</h3>
-      <p>Perfect sweet for festivals and functions.</p>
-      <div class="price">₹420 / kg</div>
-      <button class="order-btn" onclick="order('Motichoor Laddu')">Order on WhatsApp</button>
+      <div class="card-content">
+        <h3>Motichoor Laddu</h3>
+        <p>Perfect for festivals, pooja and celebrations.</p>
+        <div class="price">₹420 / kg</div>
+        <button class="small-btn" onclick="orderItem('Motichoor Laddu')">Order Now</button>
+      </div>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1590080875852-ba44f83ff2db?auto=format&fit=crop&w=800&q=80">
-      <h3>Rasgulla</h3>
-      <p>Fresh, soft and delicious Bengali sweet.</p>
-      <div class="price">₹300 / kg</div>
-      <button class="order-btn" onclick="order('Rasgulla')">Order on WhatsApp</button>
+      <div class="card-content">
+        <h3>Rasgulla</h3>
+        <p>Fresh, soft and delicious syrup-based sweet.</p>
+        <div class="price">₹300 / kg</div>
+        <button class="small-btn" onclick="orderItem('Rasgulla')">Order Now</button>
+      </div>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1604908177522-402b6f0fb3f2?auto=format&fit=crop&w=800&q=80">
-      <h3>Dry Fruit Sweets</h3>
-      <p>Rich sweets made with premium dry fruits.</p>
-      <div class="price">₹950 / kg</div>
-      <button class="order-btn" onclick="order('Dry Fruit Sweets')">Order on WhatsApp</button>
+      <div class="card-content">
+        <h3>Dry Fruit Sweets</h3>
+        <p>Rich sweets made with premium dry fruits.</p>
+        <div class="price">₹950 / kg</div>
+        <button class="small-btn" onclick="orderItem('Dry Fruit Sweets')">Order Now</button>
+      </div>
     </div>
 
     <div class="card">
       <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a?auto=format&fit=crop&w=800&q=80">
-      <h3>Namkeen Mix</h3>
-      <p>Crispy and tasty snack for every mood.</p>
-      <div class="price">₹260 / kg</div>
-      <button class="order-btn" onclick="order('Namkeen Mix')">Order on WhatsApp</button>
+      <div class="card-content">
+        <h3>Namkeen Mix</h3>
+        <p>Crispy, spicy and perfect snack for family.</p>
+        <div class="price">₹260 / kg</div>
+        <button class="small-btn" onclick="orderItem('Namkeen Mix')">Order Now</button>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="features">
-  <h2 class="title">Why Choose Us?</h2>
-  <p class="subtitle">Quality you can trust</p>
+<section class="delivery" id="delivery">
+  <h2 class="title">Home Delivery Options</h2>
+  <p class="subtitle">
+    Quick, safe and fresh delivery for nearby customers.
+  </p>
 
-  <div class="cards">
-    <div class="feature-box">
-      <h3>Fresh Daily</h3>
-      <p>Sweets prepared fresh every day.</p>
+  <div class="grid">
+    <div class="delivery-box">
+      <h3>Same Day Delivery</h3>
+      <p>Available for selected nearby areas.</p>
     </div>
 
-    <div class="feature-box">
-      <h3>Pure Ingredients</h3>
-      <p>Quality ingredients for better taste.</p>
+    <div class="delivery-box">
+      <h3>Festive Bulk Orders</h3>
+      <p>Perfect for Diwali, weddings and events.</p>
     </div>
 
-    <div class="feature-box">
-      <h3>Bulk Orders</h3>
-      <p>Perfect for weddings and festivals.</p>
+    <div class="delivery-box">
+      <h3>Custom Gift Boxes</h3>
+      <p>Premium sweet boxes for gifting.</p>
     </div>
 
-    <div class="feature-box">
-      <h3>WhatsApp Ordering</h3>
-      <p>Easy and fast ordering process.</p>
+    <div class="delivery-box">
+      <h3>Pickup From Store</h3>
+      <p>Order on WhatsApp and pickup directly.</p>
+    </div>
+  </div>
+</section>
+
+<section class="quick-order">
+  <h2 class="title">Quick WhatsApp Messages</h2>
+  <p class="subtitle">
+    Click any message and directly send it on WhatsApp.
+  </p>
+
+  <div class="quick-box">
+    <h3>Select Quick Message</h3>
+
+    <div class="quick-buttons">
+      <button onclick="quickMsg('Hello, I want to see today’s sweets menu.')">Today's Menu</button>
+      <button onclick="quickMsg('Hello, I want to order sweets for home delivery.')">Home Delivery</button>
+      <button onclick="quickMsg('Hello, I want to place a bulk order for a function.')">Bulk Order</button>
+      <button onclick="quickMsg('Hello, I want to order a premium sweet gift box.')">Gift Box</button>
+      <button onclick="quickMsg('Hello, please send your shop location.')">Shop Location</button>
     </div>
   </div>
 </section>
 
 <section id="contact">
-  <div class="contact">
+  <div class="contact-card">
     <h2 class="title">Contact & Order</h2>
-    <p><strong>Phone:</strong> +91 98765 43210</p>
-    <p><strong>Address:</strong> Main Road, Your City, Maharashtra</p>
-    <p><strong>Timing:</strong> 9:00 AM - 10:00 PM</p>
+    <p><b>Phone:</b> +91 98765 43210</p>
+    <p><b>Address:</b> Main Road, Your City, Maharashtra</p>
+    <p><b>Timing:</b> 9:00 AM - 10:00 PM</p>
     <br>
-    <a class="btn" href="https://wa.me/919876543210" target="_blank">Order on WhatsApp</a>
+    <a href="https://wa.me/919876543210?text=Hello%2C%20I%20want%20to%20order%20sweets." target="_blank" class="btn btn-primary">
+      Order on WhatsApp
+    </a>
   </div>
 </section>
+
+<a class="whatsapp-float" href="https://wa.me/919876543210?text=Hello%2C%20I%20want%20to%20order%20sweets." target="_blank">☎</a>
 
 <footer>
   <p>© 2026 Sweets Shop. All Rights Reserved.</p>
 </footer>
 
 <script>
-  function order(item) {
-    let phone = "919876543210";
-    let message = `Hello, I want to order ${item}. Please send details.`;
+  const phone = "919876543210";
+
+  function orderItem(item) {
+    const message = `Hello, I want to order ${item}. Please share availability, price and home delivery details.`;
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
+  }
+
+  function quickMsg(message) {
     window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
   }
 </script>
