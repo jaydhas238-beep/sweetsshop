@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sweets Shop | Fresh Indian Sweets</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #fffaf3;
+      color: #2b1a10;
+    }
+
+    header {
+      background: #8b0000;
+      color: white;
+      padding: 18px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: bold;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 25px;
+      font-weight: 600;
+    }
+
+    .hero {
+      min-height: 90vh;
+      background: linear-gradient(rgba(0,0,0,.45), rgba(0,0,0,.45)),
+      url("https://images.unsplash.com/photo-1605197183305-6d0fbb9a9236?auto=format&fit=crop&w=1600&q=80");
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      align-items: center;
+      padding: 0 8%;
+      color: white;
+    }
+
+    .hero-content {
+      max-width: 650px;
+    }
+
+    .hero h1 {
+      font-size: 56px;
+      margin-bottom: 20px;
+    }
+
+    .hero p {
+      font-size: 20px;
+      margin-bottom: 30px;
+      line-height: 1.6;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #ffb703;
+      color: #2b1a10;
+      padding: 14px 28px;
+      border-radius: 30px;
+      text-decoration: none;
+      font-weight: bold;
+      margin-right: 12px;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      background: #ffd166;
+    }
+
+    section {
+      padding: 70px 8%;
+    }
+
+    .title {
+      text-align: center;
+      font-size: 38px;
+      margin-bottom: 15px;
+      color: #8b0000;
+    }
+
+    .subtitle {
+      text-align: center;
+      margin-bottom: 45px;
+      color: #6b4b36;
+      font-size: 17px;
+    }
+
+    .about {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.15);
+    }
+
+    .about p {
+      font-size: 18px;
+      line-height: 1.8;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      background: white;
+      padding: 25px;
+      border-radius: 18px;
+      text-align: center;
+      box-shadow: 0 8px 25px rgba(0,0,0,.08);
+      transition: .3s;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+    }
+
+    .card img {
+      width: 100%;
+      height: 170px;
+      object-fit: cover;
+      border-radius: 15px;
+      margin-bottom: 15px;
+    }
+
+    .card h3 {
+      color: #8b0000;
+      margin-bottom: 10px;
+    }
+
+    .price {
+      font-weight: bold;
+      color: #d00000;
+      margin: 12px 0;
+    }
+
+    .order-btn {
+      border: none;
+      background: #8b0000;
+      color: white;
+      padding: 11px 22px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    .features {
+      background: #8b0000;
+      color: white;
+    }
+
+    .features .title {
+      color: #ffcc70;
+    }
+
+    .features .subtitle {
+      color: #ffe8b8;
+    }
+
+    .feature-box {
+      background: rgba(255,255,255,.12);
+      padding: 25px;
+      border-radius: 16px;
+      text-align: center;
+    }
+
+    .contact {
+      background: white;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(0,0,0,.08);
+      max-width: 900px;
+      margin: auto;
+      padding: 40px;
+      text-align: center;
+    }
+
+    .contact p {
+      font-size: 18px;
+      margin: 12px 0;
+    }
+
+    footer {
+      background: #2b1a10;
+      color: white;
+      text-align: center;
+      padding: 22px;
+    }
+
+    @media(max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 12px;
+      }
+
+      nav a {
+        margin: 0 8px;
+        font-size: 14px;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">Sweets Shop</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#menu">Menu</a>
+    <a href="#contact">Contact</a>
+  </nav>
+</header>
+
+<section class="hero" id="home">
+  <div class="hero-content">
+    <h1>Fresh Sweets Made With Love</h1>
+    <p>
+      Enjoy premium Indian sweets, namkeen, dry fruit sweets and festive gift boxes
+      made fresh every day with authentic taste.
+    </p>
+    <a href="#menu" class="btn">View Menu</a>
+    <a href="#contact" class="btn">Order Now</a>
+  </div>
+</section>
+
+<section id="about">
+  <h2 class="title">About Sweets Shop</h2>
+  <p class="subtitle">Traditional taste with modern quality</p>
+
+  <div class="about">
+    <img src="https://images.unsplash.com/photo-1615485500834-bc10199bc727?auto=format&fit=crop&w=1000&q=80">
+
+    <p>
+      Sweets Shop brings you delicious and fresh sweets prepared using quality
+      ingredients. From traditional mithai to modern gift packs, we serve sweets
+      perfect for festivals, weddings, birthdays and daily celebrations.
+      <br><br>
+      We also accept bulk orders, festive orders and custom sweet boxes.
+    </p>
+  </div>
+</section>
+
+<section id="menu">
+  <h2 class="title">Our Best Sellers</h2>
+  <p class="subtitle">Fresh, tasty and made daily</p>
+
+  <div class="cards">
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1605197183305-6d0fbb9a9236?auto=format&fit=crop&w=800&q=80">
+      <h3>Kaju Katli</h3>
+      <p>Premium cashew sweet with rich taste.</p>
+      <div class="price">₹850 / kg</div>
+      <button class="order-btn" onclick="order('Kaju Katli')">Order on WhatsApp</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1631452180519-c014fe946bc7?auto=format&fit=crop&w=800&q=80">
+      <h3>Gulab Jamun</h3>
+      <p>Soft and juicy classic Indian sweet.</p>
+      <div class="price">₹320 / kg</div>
+      <button class="order-btn" onclick="order('Gulab Jamun')">Order on WhatsApp</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?auto=format&fit=crop&w=800&q=80">
+      <h3>Motichoor Laddu</h3>
+      <p>Perfect sweet for festivals and functions.</p>
+      <div class="price">₹420 / kg</div>
+      <button class="order-btn" onclick="order('Motichoor Laddu')">Order on WhatsApp</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1590080875852-ba44f83ff2db?auto=format&fit=crop&w=800&q=80">
+      <h3>Rasgulla</h3>
+      <p>Fresh, soft and delicious Bengali sweet.</p>
+      <div class="price">₹300 / kg</div>
+      <button class="order-btn" onclick="order('Rasgulla')">Order on WhatsApp</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1604908177522-402b6f0fb3f2?auto=format&fit=crop&w=800&q=80">
+      <h3>Dry Fruit Sweets</h3>
+      <p>Rich sweets made with premium dry fruits.</p>
+      <div class="price">₹950 / kg</div>
+      <button class="order-btn" onclick="order('Dry Fruit Sweets')">Order on WhatsApp</button>
+    </div>
+
+    <div class="card">
+      <img src="https://images.unsplash.com/photo-1603569283847-aa295f0d016a?auto=format&fit=crop&w=800&q=80">
+      <h3>Namkeen Mix</h3>
+      <p>Crispy and tasty snack for every mood.</p>
+      <div class="price">₹260 / kg</div>
+      <button class="order-btn" onclick="order('Namkeen Mix')">Order on WhatsApp</button>
+    </div>
+  </div>
+</section>
+
+<section class="features">
+  <h2 class="title">Why Choose Us?</h2>
+  <p class="subtitle">Quality you can trust</p>
+
+  <div class="cards">
+    <div class="feature-box">
+      <h3>Fresh Daily</h3>
+      <p>Sweets prepared fresh every day.</p>
+    </div>
+
+    <div class="feature-box">
+      <h3>Pure Ingredients</h3>
+      <p>Quality ingredients for better taste.</p>
+    </div>
+
+    <div class="feature-box">
+      <h3>Bulk Orders</h3>
+      <p>Perfect for weddings and festivals.</p>
+    </div>
+
+    <div class="feature-box">
+      <h3>WhatsApp Ordering</h3>
+      <p>Easy and fast ordering process.</p>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact">
+    <h2 class="title">Contact & Order</h2>
+    <p><strong>Phone:</strong> +91 98765 43210</p>
+    <p><strong>Address:</strong> Main Road, Your City, Maharashtra</p>
+    <p><strong>Timing:</strong> 9:00 AM - 10:00 PM</p>
+    <br>
+    <a class="btn" href="https://wa.me/919876543210" target="_blank">Order on WhatsApp</a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Sweets Shop. All Rights Reserved.</p>
+</footer>
+
+<script>
+  function order(item) {
+    let phone = "919876543210";
+    let message = `Hello, I want to order ${item}. Please send details.`;
+    window.open(`https://wa.me/${phone}?text=${encodeURIComponent(message)}`, "_blank");
+  }
+</script>
+
+</body>
+</html>
